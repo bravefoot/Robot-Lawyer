@@ -282,11 +282,35 @@ FormQuestion.RequestStatement = function(botHandle, formHandle) {
 FormQuestion.ScheduleTime = function(botHandle, formHandle) {
 	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
 	this.onTransition = function() {
-		botHandle.say('That\'s everything we need to respond to this eviction. You\'ll get a confirmation from the court soon. In case we need to schedule a court date, when will generally work for you?');
+		botHandle.say('That\'s everything we need to respond to this eviction. In case we need to schedule a video conference with someone from the court, when will generally work for you?');
 		botHandle.startInput();
 	}
 	this.onInput = function(input) {
-		
+		botHandle.stopInput();
+		formHandle.pop();
+		formHandle.push(FormQuestion.CheckForm);
+	}
+}
+
+FormQuestion.CheckForm = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.say('Okay, perfect! Here is the form we\'ve prepared for you. Does everything look correct?');
+		botHandle.startInput();
+	}
+	this.onInput = function(input) {
+		if (positiveInputs.indexOf(input.toLowerCase()) > -1) {
+			botHandle.say('Great! The court will contact you soon with anything else you need to know. I\'m rooting for you');
+			formHandle.pop();
+			formHandle.push(FormQuestion.Done);
+		}
+	}
+}
+
+FormQuestion.Done = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.done();
 	}
 }
 
