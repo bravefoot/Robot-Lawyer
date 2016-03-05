@@ -176,7 +176,7 @@ FormQuestion.CaseNumber = function(botHandle, formHandle) {
 			botHandle.stopInput();
 			botHandle.say("Alright, we're pulling up your case information now.");
 			formHandle.pop();
-			formHandle.push(FormQuestion.NotImplemented);
+			formHandle.push(FormQuestion.HaventPaid);
 		} else {
 			botHandle.say('That doesn\'t quite look like a  case number');
 		}
@@ -194,13 +194,24 @@ FormQuestion.HaventPaid = function(botHandle, formHandle) {
 		if (negativeInputs.indexOf(input) > -1) {
 			botHandle.say('I\'m so sorry, that must be really stressful. Give me a second to see how I can help.');
 			formHandle.pop();
-			formHandle.push()
+			formHandle.push(FormQuestion.RequestReceipt);
 		} else if (negativeInputs.indexOf(input) > -1) {
 			botHandle.say('That might make things a bit trickier. I\'ll need some more time to think about it');
 			formHandle.push(FormQuestion.NotImplemented);
 		} else {
 			formHandle.push(FormQuestion.Confused);
 		}
+	}
+}
+
+FormQuestion.RequestReceipt= function(botHandle, formHandle) {
+	this.onTransition = function(){
+		botHandle.say("Do you have any evidence of payment? Maybe a picture/pdf of a bank statement?");
+		botHandle.requestFile(function() {
+			botHandle.say("Thank you. We are putting together a case for you, but a statement of some sort would go a long way.")
+			botHandle.pop();
+			botHandle.push(FormQuestion.NotImplemented);
+		});
 	}
 }
 

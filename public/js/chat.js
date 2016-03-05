@@ -1,15 +1,13 @@
 var onUserPost = [];
 
-$(document).ready(function(){
-	var convo_index = 0;
-	
-	converse(convo_index);
+var convoIter = 0;
 
-	var form = new basicForm();
-	var question = form.getFirstQuestion();
+$(document).ready(function(){
+//	var form = new basicForm();
+//	var question = form.getFirstQuestion();
 	var awaitingAnswer = false;
 	var runQuestion = function() {
-		var text = question.questionText;
+//		var text = question.questionText;
 		// $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
 		// //$('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
 
@@ -19,22 +17,20 @@ $(document).ready(function(){
   //       });
 
 		awaitingAnswer = true;
-        //postBotMessage(question.questionText);
-        converse(convo_index++);
-		if(question.id == "done") {
-			finishChat()
-		} else {
-			awaitingAnswer = true;
-		}
+        converse(convoIter++);
+  		// if(question.id == "done") {
+		// 	finishChat()
+		// } else {
+		// 	awaitingAnswer = true;
+		// }
 	}
-    
 
 	$('#input-submit').click(function(e){
 		var text = $('#user-input').val();
 		if(awaitingAnswer) {
 			awaitingAnswer = false;
 			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
-			question = question.acceptInput(text);
+//			question = question.acceptInput(text);
 			runQuestion();
 		}
         for(var i = 0; i < onUserPost.length; ++i)
@@ -46,12 +42,12 @@ $(document).ready(function(){
 	runQuestion();
 });
 
-var postBotMessage = function(text) {
-    $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+    var postBotMessage = function(text) {
+        $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
 
-    $("#typed").typed({
-        stringsElement: $('#typed-strings'),
-        typeSpeed: -25
-    });
+        $("#typed").typed({
+            stringsElement: $('#typed-strings'),
+            typeSpeed: -25
+        });
 
-}
+    }
