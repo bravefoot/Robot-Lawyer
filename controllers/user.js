@@ -4,6 +4,7 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var User = require('../models/User');
+var extend = require('util')._extend;
 
 /**
  * GET /login
@@ -180,10 +181,11 @@ exports.postUpdateProfile = function(req, res, next) {
  
  exports.getUser = function(req, res) {
 	 User.findById(req.user.id, function(err,user) {
-		 if(!user.profile.picture) {
-			 user.gravatarImage = user.gravatar(60);
+		 var completeUser = extend({}, user);
+		 if(!user.profile.picture || user.profile.picture == "") {
+			 completeUser.gravatarImage = user.gravatar(60);
 		 }
-		 res.send(user);
+		 res.send(completeUser);
 	 });
  }
 
