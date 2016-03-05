@@ -207,11 +207,24 @@ FormQuestion.HaventPaid = function(botHandle, formHandle) {
 FormQuestion.RequestReceipt= function(botHandle, formHandle) {
 	this.onTransition = function(){
 		botHandle.say("Do you have any evidence of payment? Maybe a picture/pdf of a bank statement?");
+		botHandle.startInput();
+		}
+	this.onInput = function(input) {
+		if (positiveInputs.indexOf(input) > -1) {
+			botHandle.say('Please upload your picture here: ' + "<form role='form' enctype='multipart/form-data' action='/api/upload' method='POST'><div class='form-group'><input type='file' name='myfile'></input><button class='btn btn-primary' type='submit'>Submit</button></div></form>")
+
+		//      form(role='form', enctype='multipart/form-data', method='POST')
+        // .form-group
+        //   label.control-label File Input
+        //   input(type='file', name='myFile')
+        // button.btn.btn-primary(type='submit') Submit
+	}
 		botHandle.requestFile(function() {
 			botHandle.say("Thank you. We are putting together a case for you, but a statement of some sort would go a long way.")
 			botHandle.pop();
 			botHandle.push(FormQuestion.NotImplemented);
 		});
+
 	}
 }
 

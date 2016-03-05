@@ -5,6 +5,7 @@ $(document).ready(function(){
     var botHandle = {
 		say: function(text) {
 			$('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
+			window.scrollTo(0,document.body.scrollHeight);
 		},		
 		startInput: function() {
 			awaitingAnswer = true;

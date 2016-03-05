@@ -850,7 +850,7 @@ exports.getFileUpload = function(req, res, next) {
 
 exports.postFileUpload = function(req, res, next) {
   req.flash('success', { msg: 'File was uploaded successfully.'});
-  res.redirect('/api/upload');
+  //res.redirect('/api/upload');
 };
 
 /**
