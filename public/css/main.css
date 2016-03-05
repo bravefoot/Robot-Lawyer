@@ -9583,7 +9583,8 @@ textarea {
   background-color: #FAFAFA; }
 
 #chatarea {
-  padding-top: 15px; }
+  padding-top: 15px;
+  margin-bottom: 5%; }
 
 .chatbox {
   color: #FFFFFF;
