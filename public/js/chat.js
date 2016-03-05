@@ -1,7 +1,10 @@
 var onUserPost = [];
 
 $(document).ready(function(){
-	converse(0);
+	var convo_index = 0;
+	
+	converse(convo_index);
+
 	var form = new basicForm();
 	var question = form.getFirstQuestion();
 	var awaitingAnswer = false;
@@ -16,7 +19,8 @@ $(document).ready(function(){
   //       });
 
 		awaitingAnswer = true;
-        postMessage(question.questionText);
+        //postBotMessage(question.questionText);
+        converse(convo_index++);
 		if(question.id == "done") {
 			finishChat()
 		} else {
@@ -24,8 +28,6 @@ $(document).ready(function(){
 		}
 	}
     
-
-
 
 	$('#input-submit').click(function(e){
 		var text = $('#user-input').val();
@@ -44,12 +46,12 @@ $(document).ready(function(){
 	runQuestion();
 });
 
-    var postBotMessage = function(text) {
-        $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+var postBotMessage = function(text) {
+    $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
 
-        $("#typed").typed({
-            stringsElement: $('#typed-strings'),
-            typeSpeed: -25
-        });
+    $("#typed").typed({
+        stringsElement: $('#typed-strings'),
+        typeSpeed: -25
+    });
 
-    }
+}
