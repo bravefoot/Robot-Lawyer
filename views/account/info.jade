@@ -1,0 +1,42 @@
+extends ../layout
+
+block content
+	.page-header
+		h3 Personal Information
+
+	form.form-horizontal(action='/info', method='POST')
+		input(type='hidden', name='_csrf', value=_csrf)
+		.form-group
+			label.col-sm-3.control-label(for='fullName') Full Name
+			.col-sm-7
+				input.form-control(type='text', name='fullName', id='fullName', value='#{user.legalInfo.fullName}')
+		.form-group
+			label.col-sm-3.control-label(for='email') Email
+			.col-sm-7
+				input.form-control(type='email', name='email', id='email', value='#{user.email}')
+		.form-group
+			label.col-sm-3.control-label(for='gender') Gender
+			.col-sm-4
+				label.radio.col-sm-4
+					input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+					span Male
+				label.radio.col-sm-4
+					input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
+					span Female
+		.form-group
+			label.col-sm-3.control-label(for='streetAddress') Street Address
+			.col-sm-7
+				input.form-control(type='text', name='streetAddress', id='streetAddress', value='#{user.legalInfo.streetAddress}')
+		.form-group
+			label.col-sm-3.control-label(for='city') City
+			.col-sm-7
+				input.form-control(type='text', name='city', id='city', value='#{user.legalInfo.streetAddressCity}')
+		.form-group
+			label.col-sm-3.control-label(for='zip') Zip Code
+			.col-sm-2
+				input.form-control(type='text', name='zip', id='zip', value='#{user.legalInfo.streetAddressZip}')
+		.form-group
+			.col-sm-offset-3.col-sm-4
+				button.btn.btn.btn-primary(type='submit')
+					i.fa.fa-pencil
+						| Update Information

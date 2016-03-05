@@ -148,6 +148,43 @@ exports.postUpdateProfile = function(req, res, next) {
 };
 
 /**
+ * GET /info
+ */
+ exports.getInfo = function(req, res) {
+	res.render('account/info', {
+	  title: 'User Info'
+	})
+ }
+ 
+ exports.postInfo = function(req, res) {
+	User.findById(req.user.id, function(err, user) {
+    if (err) {
+      return next(err);
+    }
+    user.email = req.body.email || '';
+    user.legalInfo.fullName = req.body.fullName || '';
+    user.profile.gender = req.body.gender || '';
+    user.legalInfo.phoneNumber = req.body.phoneNumber || '';
+    user.legalInfo.streetAddress = req.body.streetAddress || '';
+	user.legalInfo.streetAddressCity = req.body.city || '';
+	user.legalInfo.streetAddressZip = req.body.zip || '';
+    user.save(function(err) {
+      if (err) {
+        return next(err);
+      }
+      req.flash('success', { msg: 'Profile information updated.' });
+      res.redirect('/info');
+    });
+  });
+ }
+ 
+ exports.getUser = function(req, res) {
+	 User.findById(req.user.id, function(err,user) {
+		 res.send(user);
+	 });
+ }
+
+/**
  * POST /account/password
  * Update current password.
  */

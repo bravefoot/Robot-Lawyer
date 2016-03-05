@@ -23,6 +23,14 @@ var userSchema = new mongoose.Schema({
     location: { type: String, default: '' },
     website: { type: String, default: '' },
     picture: { type: String, default: '' }
+  },
+  
+  legalInfo: {
+	fullName: { type: String, default: '' }, 
+	phoneNumber: { type: String, default: '' },
+	streetAddress: { type: String, default: '' },
+	streetAddressCity: { type: String, default: '' },
+	streetAddressZip: { type: String, default: '' }
   }
 }, { timestamps: true });
 
