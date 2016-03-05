@@ -240,7 +240,11 @@ FormQuestion.HaventPaid = function(botHandle, formHandle) {
 	this.onInput = function(input) {
 		botHandle.stopInput();
 		if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
-			botHandle.say('I\'m so sorry, that must be really stressful. Give me a second to see how I can help.');
+			if(input === 'THAT\'S ABSURD') {
+				botHandle.say('I\'ll take that as a no. Give me a second to see how I can help.');
+			} else {
+				botHandle.say('I\'m so sorry, that must be really stressful. Give me a second to see how I can help.');
+			}
 			formHandle.pop();
 			formHandle.push(FormQuestion.RequestReceipt);
 		} else if (positiveInputs.indexOf(input.toLowerCase()) > -1) {
