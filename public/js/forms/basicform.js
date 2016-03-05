@@ -67,9 +67,6 @@ FormQuestion.Introduction = function(botHandle, formHandle) {
 			} else if(userData.profile.name && userData.profile.name.split(' ').length > 1) {
 				name = userData.profile.name.split(' ')[0];
 			}
-			if(name != '') {
-				name = name + '. ';
-			}
 			botHandle.say('Hello ' + name + '. What\'s the problem?');
 			botHandle.startInput();
 		})
@@ -120,7 +117,7 @@ FormQuestion.VerifyContact = function(botHandle, formHandle) {
 			url: '/user'
 		}).done(function(userData){
 			if(userData.legalInfo.phoneNumber && userData.email) {
-				botHandle.say('Are ' + userData.email + ' and ' + userData.legalInfo.phoneNumber + 'still good ways to contact you?');
+				botHandle.say('Are ' + userData.email + ' and ' + userData.legalInfo.phoneNumber + ' still good ways to contact you?');
 				botHandle.startInput();
 			} else {
 				formHandle.pop();
