@@ -28,7 +28,8 @@ var FormHandle = function(form, botHandle) {
 	}
 }
 
-var basicForm = function(botHandle) {
+var basicForm = function(botHandle) {	
+	var responses = {};
 	
 	this.stateStack = [];
 	
@@ -41,8 +42,13 @@ var basicForm = function(botHandle) {
 	formHandle.push(FormQuestion.Introduction);
 	
 	this.handleInput = function(input) {
+		if(responsesToRemember.indexOf(this.peek().id) > -1){
+			responses[this.peek().id] = input;
+		}
 		formHandle.handleInput(input);
-	}
+	}.bind(this);
+	
+	var responsesToRemember = ['case-number', 'statement', 'receipt', 'court-date'];
 }
 
 FormQuestion.Introduction = function(botHandle, formHandle) {
@@ -73,7 +79,7 @@ FormQuestion.Introduction = function(botHandle, formHandle) {
 }
 
 FormQuestion.VerifyAddress = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'introduction', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'verify-address', botHandle, formHandle);
 	this.onTransition = function() {
 		$.ajax({
 			url: '/user'
@@ -104,7 +110,7 @@ FormQuestion.VerifyAddress = function(botHandle, formHandle) {
 }
 
 FormQuestion.VerifyPhone = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'introduction', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'verify-phone', botHandle, formHandle);
 	this.onTransition = function() {
 		$.ajax({
 			url: '/user'
@@ -135,7 +141,7 @@ FormQuestion.VerifyPhone = function(botHandle, formHandle) {
 }
 
 FormQuestion.VerifyEmail = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'introduction', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'verify-email', botHandle, formHandle);
 	this.onTransition = function() {
 		$.ajax({
 			url: '/user'
@@ -166,7 +172,7 @@ FormQuestion.VerifyEmail = function(botHandle, formHandle) {
 }
 
 FormQuestion.CaseNumber = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'introduction', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'case-number', botHandle, formHandle);
 	this.onTransition = function() {
 		botHandle.say('Okay, now I just need the case number you should have received in your eviction notice. Should look like this: <img src="http://www.maine-coon-cat-nation.com/image-files/cute-kitten-names.jpg"></img>')
 		botHandle.startInput();
@@ -184,7 +190,7 @@ FormQuestion.CaseNumber = function(botHandle, formHandle) {
 }
 
 FormQuestion.HaventPaid = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'introduction', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'havent-paid', botHandle, formHandle);
 	this.onTransition = function() {
 		botHandle.say('It looks like your landlord is claiming you haven\'t paid your rent in 3 months. Is that true?')
 		botHandle.startInput();
@@ -205,6 +211,7 @@ FormQuestion.HaventPaid = function(botHandle, formHandle) {
 }
 
 FormQuestion.RequestReceipt= function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'request-receipt', botHandle, formHandle);
 	this.onTransition = function(){
 		botHandle.say("Do you have any evidence of payment? Maybe a picture/pdf of a bank statement?");
 		botHandle.startInput();
@@ -229,7 +236,7 @@ FormQuestion.RequestReceipt= function(botHandle, formHandle) {
 }
 
 FormQuestion.NotImplemented = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'introduction', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'not-implemented', botHandle, formHandle);
 	this.onTransition = function() {
 		botHandle.say("We haven't gotten to this flow yet. Would you like to go back to the last question?")
 		botHandle.startInput();
@@ -245,7 +252,7 @@ FormQuestion.NotImplemented = function(botHandle, formHandle) {
 }
 
 FormQuestion.Confused = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'introduction', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'confused', botHandle, formHandle);
 	this.onTransition = function() {
 		botHandle.say("I don't quite understand your response")
 		botHandle.startInput();
