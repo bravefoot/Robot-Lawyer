@@ -26,10 +26,14 @@ var FormHandle = function(form, botHandle) {
 	this.handleInput = function(input) {
 		form.peek().onInput(input);
 	}
+	
+	this.generateDocument = function() {
+		//do something with form.responses
+	}
 }
 
 var basicForm = function(botHandle) {	
-	var responses = {};
+	this.responses = {};
 	
 	this.stateStack = [];
 	
@@ -43,7 +47,7 @@ var basicForm = function(botHandle) {
 	
 	this.handleInput = function(input) {
 		if(responsesToRemember.indexOf(this.peek().id) > -1){
-			responses[this.peek().id] = input;
+			this.responses[this.peek().id] = input;
 		}
 		formHandle.handleInput(input);
 	}.bind(this);
@@ -295,6 +299,7 @@ FormQuestion.ScheduleTime = function(botHandle, formHandle) {
 FormQuestion.CheckForm = function(botHandle, formHandle) {
 	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
 	this.onTransition = function() {
+		formHandle.generateDocument();
 		botHandle.say('Okay, perfect! Here is the form we\'ve prepared for you. Does everything look correct?');
 		botHandle.startInput();
 	}
