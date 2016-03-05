@@ -4,7 +4,12 @@ $(document).ready(function(){
 	
     var botHandle = {
 		say: function(text) {
-			$('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+			//$('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+			setTimeout(function(){ 
+				$('<div class="well chatbox robot-chat">You: '+ text +'</div>').hide().appendTo("#chatarea").fadeIn(2000);
+			 }, 750);
+		
+
 			// $('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
 			// $("#typed").typed({
 	  //           stringsElement: $('#typed-strings'),
@@ -34,7 +39,9 @@ $(document).ready(function(){
 		if(awaitingAnswer) {
 			var text = $('#user-input').val();
 			document.getElementById("user-input").value = "";
-			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
+			//$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
+			$('<div class="well chatbox user-chat">You: '+ text +'</div>').hide().appendTo("#chatarea").fadeIn(1000);
+
 			form.handleInput(text);
 		}
 		$('#input-submit').focus();
