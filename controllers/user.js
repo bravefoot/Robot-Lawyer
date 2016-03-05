@@ -177,6 +177,12 @@ exports.postUpdateProfile = function(req, res, next) {
     });
   });
  }
+ 
+ exports.getUser = function(req, res) {
+	 User.findById(req.user.id, function(err,user) {
+		 res.send(user);
+	 });
+ }
 
 /**
  * POST /account/password

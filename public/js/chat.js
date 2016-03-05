@@ -17,6 +17,9 @@ $(document).ready(function(){
 			runQuestion();
 		}
 	});
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5840b481390a9eee1a634914c06ea5b4e345c53e
 	runQuestion();
 });
