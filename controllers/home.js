@@ -7,3 +7,10 @@ exports.index = function(req, res) {
     title: 'Home'
   });
 };
+
+exports.dashboard=function(req,res) {
+	res.render('dashboard',{
+		title:'dashboard'
+	})
+
+}
