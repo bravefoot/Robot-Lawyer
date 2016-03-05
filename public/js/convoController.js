@@ -1,27 +1,46 @@
+var controllerCallback = function(type, params, setter)
+{
+    onUserPost.push(value =>
+    {
+        if(type === "regex")
+        {
+            setter(params.exec(value)[0]);
+        }
+        else
+        {
+            setter(value);
+        }
+    });
+};
+
 var convoController = function(index, callback)
 {
     var component = conversation[index];
     if(component.text != null)
     {
+        postMessage(component.text);
     }
     else if(component.keywords != null)
     {
+        callback("keywords",null,function(response)
+        {
+            component.keywords.forEach(key => 
+            {
+                if(response.contains(key)) 
+                {
+                    convoController(index + 1, callback);
+                }
+            });
+        });
     }
     else if(component.retrieveData != null)
     {
         var retriever = component.retrieveData;
-        if(retriever.type === "regex")
+        var params = null;
+        if(retriever.type == "regex")
         {
-        }
-        else if(retriever.type === "text/plain")
-        {
-        }
-        else if(retriever.type === "file")
-        {
-        }
-        else if(retriever.type === "date")
-        {
-        }
-        callback(retriever.type, retriever.setter);
+           params = retriever.regex;
+        }        
+        callback(retriever.type, params, retriever.setter);
     }
 };

@@ -1,3 +1,5 @@
+var onUserPost = [];
+
 $(document).ready(function(){
 	var form = new basicForm();
 	var question = form.getFirstQuestion();
@@ -13,16 +15,31 @@ $(document).ready(function(){
         });
 
 		awaitingAnswer = true;
+        postMessage(question.questionText);
+		if(question.id == "done") {
+			finishChat()
+		} else {
+			awaitingAnswer = true;
+		}
 	}
+    
+    var postMessage = function(text) {
+        $('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
+    }
+
 
 	$('#input-submit').click(function(e){
-		if(awaitingAnswer) {
 		var text = $('#user-input').val();
+		if(awaitingAnswer) {
 			awaitingAnswer = false;
 			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
 			question = question.acceptInput(text);
 			runQuestion();
 		}
+        onUserPost.forEach(eventHandler =>
+        {
+           eventHandler(text); 
+        });
 	});
 	runQuestion();
 });
