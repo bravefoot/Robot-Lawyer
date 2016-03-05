@@ -1,3 +1,5 @@
+var onUserPost = [];
+
 $(document).ready(function(){
 	
 	var myFirebase = new Firebase("https://luminous-heat-5923.firebaseio.com/")
@@ -23,18 +25,22 @@ $(document).ready(function(){
 	}
 	
 	var runQuestion = function() {
-		var text = question.questionText;
-		$('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
+        postMessage(question.questionText);
 		if(question.id == "done") {
 			finishChat()
 		} else {
 			awaitingAnswer = true;
 		}
 	}
+    
+    var postMessage = function(text) {
+        $('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
+    }
+
 
 	$('#input-submit').click(function(e){
-		if(awaitingAnswer) {
 		var text = $('#user-input').val();
+		if(awaitingAnswer) {
 			awaitingAnswer = false;
 			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
 			lastQuestion = question;
@@ -45,6 +51,10 @@ $(document).ready(function(){
 			
 			runQuestion();
 		}
+        onUserPost.forEach(eventHandler =>
+        {
+           eventHandler(text); 
+        });
 	});
 	
 	runQuestion();
