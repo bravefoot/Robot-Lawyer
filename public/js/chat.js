@@ -6,13 +6,13 @@ $(document).ready(function(){
 	var awaitingAnswer = false;
 	var runQuestion = function() {
 		var text = question.questionText;
-		$('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
-		//$('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
+		// $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+		// //$('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
 
-        $("#typed").typed({
-            stringsElement: $('#typed-strings'),
-            typeSpeed: -25
-        });
+  //       $("#typed").typed({
+  //           stringsElement: $('#typed-strings'),
+  //           typeSpeed: -25
+  //       });
 
 		awaitingAnswer = true;
         postMessage(question.questionText);
@@ -24,7 +24,12 @@ $(document).ready(function(){
 	}
     
     var postMessage = function(text) {
-        $('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
+        $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+        $("#typed").typed({
+            stringsElement: $('#typed-strings'),
+            typeSpeed: -25
+        });
+
     }
 
 
