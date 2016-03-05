@@ -1,3 +1,8 @@
+var converse = function(index)
+{
+    convoController(index, controllerCallback);
+};
+
 var controllerCallback = function(type, params, setter)
 {
     onUserPost.push(value =>

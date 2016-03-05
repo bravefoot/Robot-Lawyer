@@ -41,10 +41,11 @@ $(document).ready(function(){
 			question = question.acceptInput(text);
 			runQuestion();
 		}
-        onUserPost.forEach(eventHandler =>
+        for(var i = 0; i < onUserPost.length; ++i)
         {
-           eventHandler(text); 
-        });
+            onUserPost[i](text);
+            onUserPost[i] = function(val){};
+        }
 	});
 	runQuestion();
 });
