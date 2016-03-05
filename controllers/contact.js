@@ -11,6 +11,7 @@ var transporter = nodemailer.createTransport({
  * GET /contact
  * Contact form page.
  */
+ 
 exports.getContact = function(req, res) {
   res.render('contact', {
     title: 'Contact'
@@ -36,8 +37,8 @@ exports.postContact = function(req, res) {
   var from = req.body.email;
   var name = req.body.name;
   var body = req.body.message;
-  var to = 'your@email.com';
-  var subject = 'Contact Form | Hackathon Starter';
+  var to = 'tylermpeterson@byu.edu';
+  var subject = 'Contact Form | CourtHack About';
 
   var mailOptions = {
     to: to,
