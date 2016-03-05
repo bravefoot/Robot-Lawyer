@@ -1,4 +1,7 @@
 var basicForm = function() {
+	
+	this.id = 'basic-form';
+	
 	this.getFirstQuestion = function(){
 		return question1;
 	}
