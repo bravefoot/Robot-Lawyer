@@ -5,7 +5,7 @@
     <script src="/js/lib/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/main.css">
   </head>
-  <body>
+  <body id="chat-body">
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,9 +17,8 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href=
-                        "#"><img src=
-                        "https://gravatar.com/avatar/34394f482b49026ee8773e292c822e90?s=60&amp;d=retro">themcaffee@gmail.com&nbsp;<i class="caret"></i></a>
+                        <a id="username-field" class="dropdown-toggle" data-toggle="dropdown" href=
+                        "#"><img id="gravatar-field" />&nbsp;<i class="caret"></i></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="/account">My Account</a>
@@ -35,7 +34,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div id="chat-content" class="container">
       <div class="form-horizontal">
         <div id="chatarea" class="col-sm-offset-2 col-sm-8">
         </div>
@@ -46,12 +45,13 @@
           <div class="input-group">
             <textarea id="user-input" class="form-control" rows="1" style="resize:none"></textarea>
             <span class="input-group-btn">
-              <button id="input-submit" class=" btn btn-default" placeholder="Type here...">Submit</button>
+              <button id="input-submit" class=" btn btn-primary" placeholder="Type here...">Submit</button>
             </span>
           </div>
         </div>
       </div>
     </div>
+
     <!--- Scripts -->
     <script type="text/javascript" src="/js/questions/questions.js"></script>
     <script type="text/javascript" src="/js/forms/basicform.js"></script>

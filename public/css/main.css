@@ -9514,7 +9514,7 @@ textarea {
   margin-right: 6px; }
 
 #page-top {
-  background: url("/images/court.jpeg") no-repeat center center fixed;
+  background: url("/images/courthouse2.png") no-repeat center center fixed;
   height: 100%;
   margin-bottom: 0px;
   -webkit-background-size: cover;
@@ -9579,6 +9579,9 @@ textarea {
 #input-submit {
   margin-left: 5px; }
 
+#chat-body {
+  background-color: #FAFAFA; }
+
 #chatarea {
   padding-top: 15px;
   margin-bottom: 5%; }
@@ -9588,11 +9591,12 @@ textarea {
   font-size: 16px; }
 
 .robot-chat {
-  background-color: #2c3e50; }
+  background-color: #64B4F6; }
 
 .user-chat {
-  background-color: #798d8f;
-  text-align: right; }
+  background-color: RGBA(255, 255, 255, 0.82);
+  text-align: right;
+  color: #000000; }
 
 .author-text {
   font-size: 14px;
