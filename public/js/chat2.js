@@ -11,7 +11,7 @@ $(document).ready(function(){
 		},
 		stopInput: function() {
 			awaitingAnswer = false;
-		}
+		},
 		requestFile: function(callback) {
 			
 		}
@@ -24,5 +24,7 @@ $(document).ready(function(){
 			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
 			form.handleInput(text);
 		}
+    //document.getElementById("user-input").value = "";
+    }
 	});
 });
