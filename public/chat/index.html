@@ -6,16 +6,47 @@
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="back-btn pull-left" href="/Dashboard"><i class="fa fa-arrow-left"></i></a>
+                <a class="navbar-brand" href="/"><i class="fa fa-cube"></i>Robot Lawyer</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href=
+                        "#"><img src=
+                        "https://gravatar.com/avatar/34394f482b49026ee8773e292c822e90?s=60&amp;d=retro">themcaffee@gmail.com&nbsp;<i class="caret"></i></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/account">My Account</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
       <div class="form-horizontal">
         <div id="chatarea" class="col-sm-offset-2 col-sm-8">
         </div>
       </div>
       <div id="footer">
-        <div class="col-lg-offset-4 col-sm-4">
+        <div class="col-lg-offset-2 col-sm-8">
           <div class="input-group">
-            <textarea id="user-input" class="form-control" rows="3" style="resize:none"></textarea>
-            <span id="input-submit" class="input-group-addon btn btn-primary">Submit</span>
+            <textarea id="user-input" class="form-control" rows="1" style="resize:none"></textarea>
+            <span class="input-group-btn">
+              <button id="input-submit" class=" btn btn-default" placeholder="Type here...">Submit</button>
+            </span>
           </div>
         </div>
       </div>

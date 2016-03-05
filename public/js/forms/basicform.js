@@ -1,5 +1,5 @@
-var positiveInputs = ["yes"];
-var negativeInputs = ['no'];
+var positiveInputs = ["yes","Yes"];
+var negativeInputs = ['no','No'];
 var FormQuestion = {};
 
 
@@ -66,7 +66,7 @@ FormQuestion.Introduction = function(botHandle, formHandle) {
 			if(name != '') {
 				name = name + '. ';
 			}
-			botHandle.say('Hello! ' + name + 'What\'s the problem!');
+			botHandle.say('Hello! ' + name + 'What\'s the problem?');
 			botHandle.startInput();
 		})
 	}

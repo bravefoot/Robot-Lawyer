@@ -29,7 +29,7 @@ $(document).ready(function(){
 		var text = $('#user-input').val();
 		if(awaitingAnswer) {
 			awaitingAnswer = false;
-			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
+			//$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
 //			question = question.acceptInput(text);
 			runQuestion();
 		}
@@ -42,12 +42,10 @@ $(document).ready(function(){
 	runQuestion();
 });
 
-    var postBotMessage = function(text) {
-        $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
-
-        $("#typed").typed({
-            stringsElement: $('#typed-strings'),
-            typeSpeed: -25
-        });
-
-    }
+var postBotMessage = function(text) {
+    $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+    $("#typed").typed({
+        stringsElement: $('#typed-strings'),
+        typeSpeed: -25
+    });
+}

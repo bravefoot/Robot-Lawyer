@@ -1,10 +1,10 @@
-@import "themes/default/variables";
+@import "themes/material/variables";
 
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
 @import "lib/font-awesome/font-awesome";
 
-@import "themes/default/default";
+@import "themes/material/material";
 
 // Scaffolding
 // -------------------------
@@ -82,9 +82,33 @@ textarea {
   position:fixed;
   left:0px;
   bottom:0px;
-  height:85px;
+  height:65px;
   width:100%;
   font-size: 16px;
+  background-color: RGBA(255, 29, 29, 0.78);
+  color: #FFFFFF;
+}
+
+.back-btn {
+  color: #666;
+  font-size: 24px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#user-input {
+  padding-top: 10px;
+  padding-right: 5px;
+  color: #FFFFFF;
+}
+
+#input-submit {
+  margin-left: 5px;
+}
+
+#chatarea {
+  padding-top: 15px;
 }
 
 .chatbox {
@@ -98,6 +122,7 @@ textarea {
 
 .user-chat {
   background-color: #798d8f;
+  text-align:right;
 }
 
 .dashoptions {

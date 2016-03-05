@@ -4,15 +4,15 @@ $(document).ready(function(){
 
     var botHandle = {
 		say: function(text) {
-			$('#chatarea').append('<div class="row"><div id="typed-strings" class="well chatbox robot-chat col-sm-5 col-lg-5"><p>Robot: '+ text +'</p></div></div>');
-			// $('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
-			// $("#typed").typed({
-	  //           stringsElement: $('#typed-strings'),
-	  //           typeSpeed: -25
-   //      	});
-   // Code above is for the typed.js. Only works for the first element, library probably requires the ID of the element.
+			//$('#chatarea').append('<div class="row"><div id="typed-strings" class="well chatbox robot-chat col-sm-5 col-lg-5"><p>Robot: '+ text +'</p></div></div>');
+			setTimeout(function(){
+				$('<div class="row"><div class="well chatbox robot-chat col-sm-5 col-lg-6">Robot: '+ text +'</div></div>').hide().appendTo("#chatarea").fadeIn(2000);
+
+			 }, 750);
+
 			window.scrollTo(0,document.body.scrollHeight);
 		},
+
 		startInput: function() {
 			awaitingAnswer = true;
 		},
@@ -25,7 +25,7 @@ $(document).ready(function(){
 				e.preventDefault();
 				callback();
 			});
-
+			window.scrollTo(0,document.body.scrollHeight);
 		}
 	}
 	var form = new basicForm(botHandle);
@@ -34,9 +34,12 @@ $(document).ready(function(){
 		if(awaitingAnswer) {
 			var text = $('#user-input').val();
 			document.getElementById("user-input").value = "";
-			$('#chatarea').append('<div class="row"><div class="well chatbox user-chat col-sm-offset-7 col-sm-5 col-lg-offset-8 col-lg-5">You: '+ text +'</div></div>');
+
+			$('<div class="row"><div class="well chatbox user-chat col-sm-offset-7 col-sm-5 col-lg-offset-7 col-lg-6"> '+ text +'</div></div>').hide().appendTo("#chatarea").fadeIn(1000);
+
 			form.handleInput(text);
 		}
+		window.scrollTo(0,document.body.scrollHeight);
 		$('#input-submit').focus();
 	}
 
