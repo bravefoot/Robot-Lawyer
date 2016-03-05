@@ -1,5 +1,5 @@
-var positiveInputs = ["yes","Yes"];
-var negativeInputs = ['no','No'];
+var positiveInputs = ["yes","yep", "of course"];
+var negativeInputs = ['no','nope', 'that\'s absurd'];
 var FormQuestion = {};
 
 
@@ -94,12 +94,12 @@ FormQuestion.VerifyAddress = function(botHandle, formHandle) {
 		});
 	}
 	this.onInput = function(input) {
-		if(positiveInputs.indexOf(input) > -1) {
+		if(positiveInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			botHandle.say("Perfect. We'll try our best to keep it that way.");
 			formHandle.pop();
 			formHandle.push(FormQuestion.VerifyPhone)
-		} else if (negativeInputs.indexOf(input) > -1) {
+		} else if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			//formHandle.clearTop();
 			formHandle.push(FormQuestion.NotImplemented)
@@ -125,12 +125,12 @@ FormQuestion.VerifyPhone = function(botHandle, formHandle) {
 		});
 	}
 	this.onInput = function(input) {
-		if(positiveInputs.indexOf(input) > -1) {
+		if(positiveInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			botHandle.say("Excellent.Thank you.");
 			formHandle.pop();
 			formHandle.push(FormQuestion.VerifyEmail)
-		} else if (negativeInputs.indexOf(input) > -1) {
+		} else if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			//formHandle.clearTop();
 			formHandle.push(FormQuestion.NotImplemented)
@@ -156,12 +156,12 @@ FormQuestion.VerifyEmail = function(botHandle, formHandle) {
 		});
 	}
 	this.onInput = function(input) {
-		if(positiveInputs.indexOf(input) > -1) {
+		if(positiveInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			botHandle.say("Okay. Thank you.");
 			formHandle.pop();
 			formHandle.push(FormQuestion.CaseNumber)
-		} else if (negativeInputs.indexOf(input) > -1) {
+		} else if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			//formHandle.clearTop();
 			formHandle.push(FormQuestion.NotImplemented)
@@ -197,11 +197,11 @@ FormQuestion.HaventPaid = function(botHandle, formHandle) {
 	}
 	this.onInput = function(input) {
 		botHandle.stopInput();
-		if (negativeInputs.indexOf(input) > -1) {
+		if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.say('I\'m so sorry, that must be really stressful. Give me a second to see how I can help.');
 			formHandle.pop();
 			formHandle.push(FormQuestion.RequestReceipt);
-		} else if (negativeInputs.indexOf(input) > -1) {
+		} else if (positiveInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.say('That might make things a bit trickier. I\'ll need some more time to think about it');
 			formHandle.push(FormQuestion.NotImplemented);
 		} else {
@@ -217,11 +217,11 @@ FormQuestion.RequestReceipt= function(botHandle, formHandle) {
 		botHandle.startInput();
 		}
 	this.onInput = function(input) {
-		if (positiveInputs.indexOf(input) > -1) {
+		if (positiveInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.requestFile(function() {
 				botHandle.say("Thank you. We are putting together a case for you, but a statement of some sort would go a long way.")
 				formHandle.pop();
-				formHandle.push(FormQuestion.NotImplemented);
+				formHandle.push(FormQuestion.RequestStatement);
 			});
 		}
 	}
@@ -259,7 +259,7 @@ FormQuestion.NotImplemented = function(botHandle, formHandle) {
 		botHandle.startInput();
 	}
 	this.onInput = function(input) {
-		if(positiveInputs.indexOf(input) > -1) {
+		if(positiveInputs.indexOf(input.toLowerCase()) > -1) {
 			formHandle.pop();
 		} else {
 			formHandle.pop();
