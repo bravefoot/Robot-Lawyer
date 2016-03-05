@@ -8826,7 +8826,27 @@ textarea {
 .fa {
   margin-right: 6px; }
 
-.btn-primary {
+* html #footer {
+  position: absolute;
+  top: expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px'); }
+
+#footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 85px;
+  width: 100%; }
+
+.chatbox {
+  color: #FFFFFF; }
+
+.robot-chat {
+  background-color: #2c3e50; }
+
+.user-chat {
+  background-color: #798d8f; }
+
+.dashoptions {
   margin-top: 15px;
   min-width: 150px;
   border-radius: 2px; }

@@ -24,19 +24,19 @@ $(document).ready(function(){
 	
 	var runQuestion = function() {
 		var text = question.questionText;
-		$('#chatarea').append('<div>Robot: '+ text +'</div>');
+		$('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
 		if(question.id == "done") {
 			finishChat()
 		} else {
 			awaitingAnswer = true;
 		}
 	}
-	
+
 	$('#input-submit').click(function(e){
 		if(awaitingAnswer) {
 		var text = $('#user-input').val();
 			awaitingAnswer = false;
-			$('#chatarea').append('<div>You: '+ text +'</div>');
+			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
 			lastQuestion = question;
 			question = question.acceptInput(text);
 			if(question != lastQuestion) {
