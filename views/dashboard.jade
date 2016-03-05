@@ -1,16 +1,70 @@
 extends layout
 
 block content
-	.col-sm-8
-		h1 What's your current problem?
-		a(class="btn btn-large btn-primary dashoptions" href="/chat/") Parking Ticket
-		br
-		a(class="btn btn-large btn-primary dashoptions" href="/chat/") Speeding Ticket
-		br
-		a(class="btn btn-large btn-primary dashoptions" href="/chat/") Eviction Notice
-		br
-		a(class="btn btn-large btn-primary dashoptions" href="/chat/") File Police Report
-		br
-		a(class="btn btn-large btn-primary dashoptions" href="/chat/") Restraining Order
-		br
-		a(class="btn btn-large btn-primary dashoptions" href="/chat/") Divorce
+    .col-sm-8
+        h1 What's your current problem?
+    #parent.grid
+      figure.effect-sarah.child
+        img(src='https://blog.agentinsure.com/wp-content/uploads/2011/03/parkingticket.jpg')
+        figcaption
+          h2 Parking Ticket
+          p.date
+            | 
+            span.city
+          p.resume_description
+            | Use this form for parking related violations.
+            | 
+          a(href='/chat')
+      figure.effect-sarah.child
+        img(src='http://www.tiogacountysheriff.com/usr/Civil/eviction.jpg')
+        figcaption
+          h2 Eviction appeal
+          p.date
+            | 
+            span.city 
+          p.resume_description
+            | Quicky fill out the required information to appeal an eviction.
+          a(href='/chat')
+      figure.effect-sarah.child
+        img(src='https://www.demandabolition.org/wp-content/uploads/2015/12/Canadian_police_cars.jpg')
+        figcaption
+          h2 Police Report
+          p.date
+            | 
+            span.city 
+          p.resume_description
+            | Quickly file a police report
+            br
+          a(href='/chat')
+      figure.effect-sarah.child
+        img(src='http://www.stetson.edu/law/academics/elder/home/media/eleazer-courtroom-banner-photo.jpg')
+        figcaption
+          h2 Divorce
+          p.date
+            |  
+            span.city 
+          p.resume_description
+            | Start the legal paperwork needed for a divorce.
+          a(href='/chat')
+      figure.effect-sarah.child
+        img(src='http://www.susantperkins.com/wp-content/uploads/2015/07/rhode-island-restraining-order.jpg')
+        figcaption
+          h2 Restraining Order
+          p.date
+            | 
+            span.city
+          p.resume_description
+            | Quickly file for a restraining order
+          a(href='/chat')
+      figure.effect-sarah.child
+        img(src='http://laws.com/uploads/cms/20100724/4c4b5baa412a7.jpg')
+        figcaption
+          h2 Other forms
+          p.date
+            | 
+            span.city 
+          p.resume_description
+            | We'll do our best to help sort you out.
+            br
+
+          a(href='/chat')
