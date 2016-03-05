@@ -32,8 +32,9 @@ $(document).ready(function(){
 		handleImput();
 	});
 	
-	$('#input-submit').click(function(e) {
+	$('#user-input').keydown(function(e) {
 		if (((event.keyCode || event.which) == 13) && !event.shiftKey) {
+			e.preventDefault();
 			handleInput();
 		}
 	});
