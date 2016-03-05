@@ -1,30 +1,20 @@
 var onUserPost = [];
 
 $(document).ready(function(){
-	
-	var myFirebase = new Firebase("https://luminous-heat-5923.firebaseio.com/")
-	
-	var user = $.ajax({
-		url: '/user'
-	})
-	var responses = {};
 	var form = new basicForm();
-	var lastQuestion;
 	var question = form.getFirstQuestion();
 	var awaitingAnswer = false;
-	
-	var finishChat = function() {
-		console.log("finishing chat")
-		var responseId = Math.random().toString();
-		user.done(function(userData) {
-			myFirebase.child('responses/' + userData._id + '/' + responseId.split('.')[1]).set({
-				formId: form.id,
-				responses: responses
-			});
-		})
-	}
-	
 	var runQuestion = function() {
+		var text = question.questionText;
+		// $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+		// //$('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
+
+  //       $("#typed").typed({
+  //           stringsElement: $('#typed-strings'),
+  //           typeSpeed: -25
+  //       });
+
+		awaitingAnswer = true;
         postMessage(question.questionText);
 		if(question.id == "done") {
 			finishChat()
@@ -34,7 +24,12 @@ $(document).ready(function(){
 	}
     
     var postMessage = function(text) {
-        $('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
+        $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+        $("#typed").typed({
+            stringsElement: $('#typed-strings'),
+            typeSpeed: -25
+        });
+
     }
 
 
@@ -43,12 +38,7 @@ $(document).ready(function(){
 		if(awaitingAnswer) {
 			awaitingAnswer = false;
 			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
-			lastQuestion = question;
 			question = question.acceptInput(text);
-			if(question != lastQuestion) {
-				responses[lastQuestion.id] = text;
-			}
-			
 			runQuestion();
 		}
         for(var i = 0; i < onUserPost.length; ++i)
@@ -57,6 +47,5 @@ $(document).ready(function(){
             onUserPost[i] = function(val){};
         }
 	});
-	
 	runQuestion();
 });
