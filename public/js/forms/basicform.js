@@ -102,7 +102,7 @@ FormQuestion.VerifyAddress = function(botHandle, formHandle) {
 			botHandle.stopInput();
 			botHandle.say("Perfect. We'll try our best to keep it that way.");
 			formHandle.pop();
-			formHandle.push(FormQuestion.VerifyPhone)
+			formHandle.push(FormQuestion.VerifyContact)
 		} else if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			//formHandle.clearTop();
@@ -216,7 +216,16 @@ FormQuestion.VerifyEmail = function(botHandle, formHandle) {
 FormQuestion.CaseNumber = function(botHandle, formHandle) {
 	questions.BaseQuestion.call(this, 'case-number', botHandle, formHandle);
 	this.onTransition = function() {
-		botHandle.say('Okay, now I just need the case number you should have received in your eviction notice. Should look like this: <img src="http://www.maine-coon-cat-nation.com/image-files/cute-kitten-names.jpg"></img>')
+		botHandle.say('Okay, now I just need the case number you should have received in your eviction notice.')
+		setTimeout(function() {
+			botHandle.say('Should look like this: <img height="200px" src="/images/kitten.jpg"></img>')
+		}, 3000);
+		setTimeout(function() {
+			botHandle.say("That was the wrong picture. Just a moment.")
+		}, 5500);
+		setTimeout(function() {
+			botHandle.say('<img height="200px" src="/images/Plaintiff.PNG"></img>')
+		}, 7500);
 		botHandle.startInput();
 	}
 	this.onInput = function(input) {
