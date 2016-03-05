@@ -39,6 +39,7 @@ var conversation =
 	{
 		retrieveData:
 		{
+			type:"regex",
 			regex:([0-9]{3}(-){,1}){2}[0-9]{4},
 			setter:function(phoneNum)
 			{
@@ -70,6 +71,7 @@ var conversation =
 	{
 		retrieveData:
 		{
+			type:"regex",
 			regex:[0-9]+,
 			setter:function(caseNo)
 			{
@@ -117,6 +119,7 @@ var conversation =
 	{
 		retrieveData:
 		{
+			type:"text/plain",
 			setter:function(statementVal)
 			{
 				statement = statementVal;
@@ -130,9 +133,9 @@ var conversation =
 		text:"We are just about done. There's no way of knowing just yet, but if this needs to go to a physical court (we might be able to do it through video chat, it just depends), could you select a date or time that works for you?"
 	},
 	{
-		calendar:
+		retrieveData:
 		{
-			select:calendar,
+			type:"date",
 			callbackFunc:function(selectedDate)
 			{
 				date = selectedDate;

@@ -16,9 +16,6 @@ var baseQuestion = function(id, getNextQuestion) {
 	}
 }
 
-
-
-
 questions.fullName = function(id, getNextQuestion) {
 	baseQuestion.call(this, id, getNextQuestion);
 	this.questionText="What is your full name (including your middle name if you have one)?"
