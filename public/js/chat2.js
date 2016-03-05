@@ -20,25 +20,25 @@ $(document).ready(function(){
 			awaitingAnswer = false;
 		},
 		requestFile: function(callback) {
-            this.say('Please upload your evidence <a href="../api/upload">here:</a>');
-			// this.say('Please upload your picture here: ' 
-            // + "<form role='form' enctype='multipart/form-data' method='POST' action='/api/upload/'>"
-            //     + "<div class='form-group'>"
-            //         + "<input type='file' id='file-name' name='myfile'></input>" 
-            //         + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>" 
-            //     + "</div>" 
-            // + "</form>");
-            // var outputVal = this.say;
-			// setTimeout(function() {
-			// 	$('#fileSubmit').click(function(e){
-			// 		e.preventDefault();
-            //         var fnInput = document.getElementById('file-name');
-            //         var fileName = fnInput.value.replace(/^.*[\\\/]/, '/uploads/');
-            //         console.log(fileName);
-            //         outputVal("<img src=" + fileName + "><\img>");
-			// 		callback();
-			// 	});
-			// }, 900);
+            //this.say('Please upload your evidence <a href="../api/upload">here:</a>');
+            this.say('Please upload your picture here: ' 
+            + "<form role='form' enctype='multipart/form-data' method='POST' action='/api/upload/'>"
+                + "<div class='form-group'>"
+                    + "<input type='file' id='file-name' name='myfile'></input>" 
+                    + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>" 
+                + "</div>" 
+            + "</form>");
+            var outputVal = this.say;
+            setTimeout(function() {
+            	$('#fileSubmit').click(function(e){
+            		e.preventDefault();
+                    var fnInput = document.getElementById('file-name');
+                    var fileName = fnInput.value.replace(/^.*[\\\/]/, '/api/upload/');
+                    console.log(fileName);
+                    outputVal("<img src=" + fileName + "><\img>");
+            		callback();
+            	});
+            }, 900);
 			window.scrollTo(0,document.body.scrollHeight);
 		},
 		done: function() {
