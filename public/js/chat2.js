@@ -4,7 +4,13 @@ $(document).ready(function(){
 	
     var botHandle = {
 		say: function(text) {
-			$('#chatarea').append('<div class="well chatbox robot-chat">Robot: '+ text +'</div>');
+			$('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+			// $('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
+			// $("#typed").typed({
+	  //           stringsElement: $('#typed-strings'),
+	  //           typeSpeed: -25
+   //      	});
+   // Code above is for the typed.js. Only works for the first element, library probably requires the ID of the element.
 			window.scrollTo(0,document.body.scrollHeight);
 		},		
 		startInput: function() {
@@ -35,7 +41,7 @@ $(document).ready(function(){
 	}
 
 	$('#input-submit').click(function(e){
-		handleImput();
+		handleInput();
 	});
 	
 	$('#user-input').keydown(function(e) {
