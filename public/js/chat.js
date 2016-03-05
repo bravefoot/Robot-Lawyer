@@ -1,6 +1,7 @@
 var onUserPost = [];
 
 $(document).ready(function(){
+	converse(0);
 	var form = new basicForm();
 	var question = form.getFirstQuestion();
 	var awaitingAnswer = false;
@@ -23,14 +24,7 @@ $(document).ready(function(){
 		}
 	}
     
-    var postMessage = function(text) {
-        $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
-        $("#typed").typed({
-            stringsElement: $('#typed-strings'),
-            typeSpeed: -25
-        });
 
-    }
 
 
 	$('#input-submit').click(function(e){
@@ -49,3 +43,13 @@ $(document).ready(function(){
 	});
 	runQuestion();
 });
+
+    var postBotMessage = function(text) {
+        $('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
+
+        $("#typed").typed({
+            stringsElement: $('#typed-strings'),
+            typeSpeed: -25
+        });
+
+    }

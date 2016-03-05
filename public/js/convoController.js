@@ -23,7 +23,7 @@ var convoController = function(index, callback)
     var component = conversation[index];
     if(component.text != null)
     {
-        postMessage(component.text);
+        postBotMessage(component.text);
     }
     else if(component.keywords != null)
     {
