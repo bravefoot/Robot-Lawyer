@@ -16,6 +16,8 @@ function upload(file,newURL) {
 
   // read data from file
   reader.readAsDataURL(file);
+  }
+};
 
 $(document).ready(function(){
 	// Populate user name and gravatar
