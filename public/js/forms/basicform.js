@@ -70,7 +70,7 @@ FormQuestion.Introduction = function(botHandle, formHandle) {
 			if(name != '') {
 				name = name + '. ';
 			}
-			botHandle.say('Hello! ' + name + 'What\'s the problem?');
+			botHandle.say('Hello ' + name + '. What\'s the problem?');
 			botHandle.startInput();
 		})
 	}
