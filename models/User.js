@@ -34,6 +34,17 @@ var userSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
+userSchema.virtual('profilePicture').get(function() {
+	if(this.profile.picture){
+		return this.profile.picture;
+	} else {
+		return this.gravatar(80);
+	}
+});
+
+userSchema.set('toObject', { virtuals: true });
+userSchema.set('toJSON', { virtuals: true });
+
 /**
  * Password hash middleware.
  */
