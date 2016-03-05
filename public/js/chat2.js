@@ -1,5 +1,15 @@
 $(document).ready(function(){
+	// Populate user name and gravatar
+	$.ajax({
+		url: '/user'
+	}).done(function(data) {
+		$("#username-field").html(data.profile.name ? data.profile.name : data.email + "&nbsp;<i class='caret'></i>");
+		$("#gravatar-field").attr("src", data.gravatar);
+		console.log(data);
+	});
 
+
+	$('#user-input').focus();
 	var awaitingAnswer = false;
 
     var botHandle = {
@@ -19,12 +29,12 @@ $(document).ready(function(){
 		},
 		requestFile: function(callback) {
             this.say('Please upload your evidence <a href="../api/upload">here:</a>');
-			// this.say('Please upload your picture here: ' 
+			// this.say('Please upload your picture here: '
             // + "<form role='form' enctype='multipart/form-data' method='POST' action='/api/upload/'>"
             //     + "<div class='form-group'>"
-            //         + "<input type='file' id='file-name' name='myfile'></input>" 
-            //         + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>" 
-            //     + "</div>" 
+            //         + "<input type='file' id='file-name' name='myfile'></input>"
+            //         + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>"
+            //     + "</div>"
             // + "</form>");
             // var outputVal = this.say;
 			// setTimeout(function() {
@@ -40,7 +50,7 @@ $(document).ready(function(){
 			window.scrollTo(0,document.body.scrollHeight);
 		},
 		done: function() {
-			
+
 		}
 	}
 	var form = new basicForm(botHandle);
@@ -56,9 +66,9 @@ $(document).ready(function(){
 		}
 		setTimeout(function(){
 			window.scrollTo(0,document.body.scrollHeight);
+			$('#user-input').focus();
 		}, 1000);
-		
-		$('#input-submit').focus();
+
 	}
 
 	$('#input-submit').click(function(e){
