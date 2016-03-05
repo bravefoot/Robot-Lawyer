@@ -18,13 +18,25 @@ $(document).ready(function(){
 		}
 	}
 	var form = new basicForm(botHandle);
-
-	$('#input-submit').click(function(e){
+	
+	var handleInput = function() {
 		if(awaitingAnswer) {
 			var text = $('#user-input').val();
 			document.getElementById("user-input").value = "";
 			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
 			form.handleInput(text);
+		}
+		$('#input-submit').focus();
+	}
+
+	$('#input-submit').click(function(e){
+		handleImput();
+	});
+	
+	$('#user-input').keydown(function(e) {
+		if (((event.keyCode || event.which) == 13) && !event.shiftKey) {
+			e.preventDefault();
+			handleInput();
 		}
 	});
 });
