@@ -21,10 +21,9 @@ $(document).ready(function(){
 	$('#input-submit').click(function(e){
 		if(awaitingAnswer) {
 			var text = $('#user-input').val();
+			document.getElementById("user-input").value = "";
 			$('#chatarea').append('<div class="well chatbox user-chat">You: '+ text +'</div>');
 			form.handleInput(text);
 		}
-    //document.getElementById("user-input").value = "";
-    }
 	});
 });
