@@ -27,8 +27,8 @@ var FormHandle = function(form, botHandle) {
 		form.peek().onInput(input);
 	}
 	
-	this.generateDocument = function() {
-		//do something with form.responses
+	this.getResponses = function() {
+		return form.responses;
 	}
 }
 
@@ -52,7 +52,7 @@ var basicForm = function(botHandle) {
 		formHandle.handleInput(input);
 	}.bind(this);
 	
-	var responsesToRemember = ['case-number', 'statement', 'court-date'];
+	var responsesToRemember = ['case-number', 'statement'];
 }
 
 FormQuestion.Introduction = function(botHandle, formHandle) {
@@ -297,7 +297,7 @@ FormQuestion.RequestStatement = function(botHandle, formHandle) {
 }
 
 FormQuestion.ScheduleTime = function(botHandle, formHandle) {
-	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
+	questions.BaseQuestion.call(this, 'court-date', botHandle, formHandle);
 	this.onTransition = function() {
 		botHandle.say('That\'s everything we need to respond to this eviction. In case we need to schedule a video conference with someone from the court, when will generally work for you?');
 		botHandle.startInput();
@@ -312,8 +312,13 @@ FormQuestion.ScheduleTime = function(botHandle, formHandle) {
 FormQuestion.CheckForm = function(botHandle, formHandle) {
 	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
 	this.onTransition = function() {
-		formHandle.generateDocument();
-		botHandle.say('Okay, perfect! Here is the form we\'ve prepared for you. Does everything look correct?');
+		var responses = formHandle.getResponses();
+		var queryString = '?';
+		queryString = queryString + 'caseNumber=' + responses['case-number'];
+		queryString = queryString + '&';
+		queryString = queryString + 'defense='+responses.statement;
+		var finalUrl = '/output.html' + queryString;
+		botHandle.say('Okay, perfect! Here is the <a target="_blank" href="' + finalUrl + '">form</a> we\'ve prepared for you. Does everything look correct?');
 		botHandle.startInput();
 	}
 	this.onInput = function(input) {
