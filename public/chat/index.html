@@ -17,7 +17,7 @@
       <div class="col-lg-offset-2 col-lg-8">
         <div class="input-group">
           <textarea id="user-input" class="form-control" rows="3" style="resize:none"></textarea>
-          <span id="input-submit" class="input-group-addon btn btn-primary">Submit</span>
+          <span id="input-submit" class="input-group-addon btn btn-primary" onclick="javascript:eraseText();">Submit</span>
         </div>
       </div>
 
@@ -33,13 +33,9 @@
 
 
   <script>
-// document.querySelector('#user-input').addEventListener('keypress', function (e) {
-//     var key = e.which || e.keyCode;
-//     if (key === 13) { 
-//       document.getElementById('#user-input').value='';
-//     }
-// });
-// working on enter key working and clearing field
+function eraseText() {
+    document.getElementById("user-input").value = "";
+}
 
   </script>
 </body>
