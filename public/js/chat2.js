@@ -40,6 +40,9 @@ $(document).ready(function(){
 			// 	});
 			// }, 900);
 			window.scrollTo(0,document.body.scrollHeight);
+		},
+		done: function() {
+			
 		}
 	}
 	var form = new basicForm(botHandle);
