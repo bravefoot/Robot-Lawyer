@@ -7,10 +7,8 @@ $(document).ready(function(){
 			//$('#chatarea').append('<div id="typed-strings" class="well chatbox robot-chat"><p>Robot: '+ text +'</p></div>');
 			setTimeout(function(){ 
 				$('<div class="well chatbox robot-chat">Robot: '+ text +'</div>').hide().appendTo("#chatarea").fadeIn(2000);
-
+				window.scrollTo(0,document.body.scrollHeight);
 			 }, 750);
-		
-			window.scrollTo(0,document.body.scrollHeight);
 			// $('#chatarea').append('<span id="typed" class="well chatbox robot-chat" style="display:block;"></span>');
 			// $("#typed").typed({
 	  //           stringsElement: $('#typed-strings'),
@@ -26,10 +24,12 @@ $(document).ready(function(){
 		},
 		requestFile: function(callback) {
 			this.say('Please upload your picture here: ' + "<form role='form' enctype='multipart/form-data' method='POST'><div class='form-group'><input type='file' name='myfile'></input><button id='fileSubmit' class='btn btn-primary'>Submit</button></div></form>");
-			$('#fileSubmit').click(function(e){
-				e.preventDefault();
-				callback();
-			});
+			setTimeout(function() {
+				$('#fileSubmit').click(function(e){
+					e.preventDefault();
+					callback();
+				});
+			}, 900);
 			window.scrollTo(0,document.body.scrollHeight);
 		}
 	}
