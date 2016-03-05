@@ -9512,7 +9512,7 @@ textarea {
 
 #page-top {
   background: url("/images/court.jpeg") no-repeat center center fixed;
-  height: max;
+  height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -9524,10 +9524,29 @@ textarea {
   font-size: 100px;
   padding-top: 25%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); }
 
 .jumbotron .lead {
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.6); }
+
+.btn-circle {
+  width: 70px;
+  height: 70px;
+  margin-top: 15px;
+  padding: 7px 16px;
+  border: 2px solid #fff;
+  border-radius: 35px;
+  font-size: 40px;
+  color: #fff;
+  background: 0 0;
+  -webkit-transition: background .3s ease-in-out;
+  -moz-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap; }
 
 * html #footer {
   position: absolute;
