@@ -14,7 +14,12 @@ $(document).ready(function(){
 			awaitingAnswer = false;
 		},
 		requestFile: function(callback) {
-			
+			this.say('Please upload your picture here: ' + "<form role='form' enctype='multipart/form-data' method='POST'><div class='form-group'><input type='file' name='myfile'></input><button id='fileSubmit' class='btn btn-primary'>Submit</button></div></form>");
+			$('#fileSubmit').click(function(e){
+				e.preventDefault();
+				callback();
+			});
+
 		}
 	}
 	var form = new basicForm(botHandle);
