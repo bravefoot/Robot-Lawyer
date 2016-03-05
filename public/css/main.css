@@ -8835,10 +8835,12 @@ textarea {
   left: 0px;
   bottom: 0px;
   height: 85px;
-  width: 100%; }
+  width: 100%;
+  font-size: 16px; }
 
 .chatbox {
-  color: #FFFFFF; }
+  color: #FFFFFF;
+  font-size: 16px; }
 
 .robot-chat {
   background-color: #2c3e50; }
