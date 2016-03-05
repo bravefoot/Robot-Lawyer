@@ -70,6 +70,28 @@ textarea {
   margin-right: 6px;
 }
 
+#page-top {
+  background: url("/images/court.jpeg") no-repeat center center fixed;
+  height: max;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.jumbotron h1 {
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 100px;
+  padding-top: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.jumbotron .lead {
+  color: #FFFFFF;
+}
+
 // Chat Stuff
 // ---------------------------
 
@@ -92,15 +114,13 @@ textarea {
 .back-btn {
   color: #666;
   font-size: 24px;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 #user-input {
   padding-top: 10px;
   padding-right: 5px;
   color: #FFFFFF;
+  background-color: RGBA()
 }
 
 #input-submit {
@@ -123,6 +143,16 @@ textarea {
 .user-chat {
   background-color: #798d8f;
   text-align:right;
+}
+
+.author-text {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.top-button {
+  width: 15%;
+  margin-bottom:15px;
 }
 
 .dashoptions {
@@ -255,6 +285,7 @@ figure.effect-sarah h2 {
     -webkit-transition: .5s all ease;
     transition: .5s all ease;
     padding-left: 10px;
+    color: #FFFFFF;
 }
 
 figure.effect-sarah h2:after {
@@ -315,4 +346,8 @@ figure.effect-sarah .date {
     margin-right: 7px;
     text-align: right;
     float: right;
+}
+
+.block-center {
+  margin: 0 auto;
 }
