@@ -9,6 +9,7 @@ $(document).ready(function(){
 	});
 
 
+	$('#user-input').focus();
 	var awaitingAnswer = false;
 
     var botHandle = {
@@ -65,9 +66,9 @@ $(document).ready(function(){
 		}
 		setTimeout(function(){
 			window.scrollTo(0,document.body.scrollHeight);
+			$('#user-input').focus();
 		}, 1000);
 
-		$('#input-submit').focus();
 	}
 
 	$('#input-submit').click(function(e){
