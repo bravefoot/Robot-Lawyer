@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$.ajax({
 		url: '/user'
 	}).done(function(data) {
-		$("#username-field").html(data.email + "&nbsp;<i class='caret'></i>");
+		$("#username-field").html(data.profile.name ? data.profile.name : data.email + "&nbsp;<i class='caret'></i>");
 		$("#gravatar-field").attr("src", data.gravatar);
 		console.log(data);
 	});
@@ -66,7 +66,7 @@ $(document).ready(function(){
 		setTimeout(function(){
 			window.scrollTo(0,document.body.scrollHeight);
 		}, 1000);
-		
+
 		$('#input-submit').focus();
 	}
 
