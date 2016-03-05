@@ -102,10 +102,48 @@ FormQuestion.VerifyAddress = function(botHandle, formHandle) {
 		} else if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
 			botHandle.stopInput();
 			//formHandle.clearTop();
-			formHandle.push(FormQuestion.NotImplemented)
+			formHandle.push(FormQuestion.ResetInformation)
 		} else {
 			formHandle.push(FormQuestion.Confused);
 		}
+	}
+}
+
+FormQuestion.VerifyContact = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'verify-contact', botHandle, formHandle);
+	this.onTransition = function(){
+		$.ajax({
+			url: '/user'
+		}).done(function(userData){
+			if(userData.legalInfo.phoneNumber && userData.email) {
+				botHandle.say('Are ' + userData.email + ' and ' + userData.legalInfo.phoneNumber + 'still good ways to contact you?');
+				botHandle.startInput();
+			} else {
+				formHandle.pop();
+				formHandle.push(FormQuestion.ResetInformation);
+			}
+		});
+	}
+	this.onInput = function(input) {
+		if(positiveInputs.indexOf(input.toLowerCase()) > -1) {
+			botHandle.stopInput();
+			botHandle.say("Excellent.Thank you.");
+			formHandle.pop();
+			formHandle.push(FormQuestion.CaseNumber)
+		} else if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
+			botHandle.stopInput();
+			//formHandle.clearTop();
+			formHandle.push(FormQuestion.ResetInformation)
+		} else {
+			formHandle.push(FormQuestion.Confused);
+		}
+	}
+}
+
+FormQuestion.ResetInformation = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'verify-contact', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.say('I\'m going to need you to update your profile <a href="/info">here</a>.');
 	}
 }
 
