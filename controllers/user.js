@@ -180,6 +180,9 @@ exports.postUpdateProfile = function(req, res, next) {
  
  exports.getUser = function(req, res) {
 	 User.findById(req.user.id, function(err,user) {
+		 if(!user.profile.picture) {
+			 user.gravatarImage = user.gravatar(60);
+		 }
 		 res.send(user);
 	 });
  }
