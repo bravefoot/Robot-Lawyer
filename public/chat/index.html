@@ -1,30 +1,33 @@
 <html>
-<head>
-  <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <script src="/js/lib/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-  <div class="container">
-    <div class="form-horizontal">
-      <div id="chatarea" class="col-lg-12"></div>
-    </div>
-
-    <div id="footer">
-      <div class="col-lg-offset-2 col-lg-8">
-        <div class="input-group">
-          <textarea id="user-input" class="form-control" rows="3" style="resize:none"></textarea>
-          <span id="input-submit" class="input-group-addon btn btn-primary">Submit</span>
+  <head>
+    <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="/js/lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-horizontal">
+        <div id="chatarea" class="col-lg-12">
+          <span id="typed" class="well chatbox robot-chat" style="display:block;"></span>
         </div>
       </div>
-
+      <div id="footer">
+        <div class="col-lg-offset-2 col-lg-8">
+          <div class="input-group">
+            <textarea id="user-input" class="form-control" rows="3" style="resize:none"></textarea>
+            <span id="input-submit" class="input-group-addon btn btn-primary" onclick="javascript:eraseText();">Submit</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <!--- Scripts --->
-  <script type="text/javascript" src="/js/questions/questions.js"></script>
-  <script type="text/javascript" src="/js/forms/basicform.js"></script>
-  <script type="text/javascript" src="/js/chat2.js"></script>
-  <script src="/js/main.js"></script>
-</body>
+    <!--- Scripts -->
+    <script type="text/javascript" src="/js/questions/questions.js"></script>
+    <script type="text/javascript" src="/js/forms/basicform.js"></script>
+    <script type="text/javascript" src="/js/chat2.js"></script>
+    <script>
+    function eraseText() {
+    document.getElementById("user-input").value = "";
+    }
+    </script>
+  </body>

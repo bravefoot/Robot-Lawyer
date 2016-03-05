@@ -40,8 +40,8 @@ var conversation =
 		retrieveData:
 		{
 			type:"regex",
-			regex:([0-9]{3}(-){,1}){2}[0-9]{4},
-			setter:function(phoneNum)
+			regex: /([0-9]{3}(-){,1}){2}[0-9]{4}/,
+			setter: function(phoneNum)
 			{
 				phone = phoneNum;
 			}
@@ -72,7 +72,7 @@ var conversation =
 		retrieveData:
 		{
 			type:"regex",
-			regex:[0-9]+,
+			regex:/[0-9]+/,
 			setter:function(caseNo)
 			{
 				caseNumber = caseNo;
