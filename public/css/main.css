@@ -8826,4 +8826,8 @@ textarea {
 .fa {
   margin-right: 6px; }
 
+.btn-primary {
+  margin-top: 15px;
+  min-width: 150px; }
+
 /*# sourceMappingURL=main.css.map */
