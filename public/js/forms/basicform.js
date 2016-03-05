@@ -26,10 +26,14 @@ var FormHandle = function(form, botHandle) {
 	this.handleInput = function(input) {
 		form.peek().onInput(input);
 	}
+	
+	this.generateDocument = function() {
+		//do something with form.responses
+	}
 }
 
 var basicForm = function(botHandle) {	
-	var responses = {};
+	this.responses = {};
 	
 	this.stateStack = [];
 	
@@ -43,7 +47,7 @@ var basicForm = function(botHandle) {
 	
 	this.handleInput = function(input) {
 		if(responsesToRemember.indexOf(this.peek().id) > -1){
-			responses[this.peek().id] = input;
+			this.responses[this.peek().id] = input;
 		}
 		formHandle.handleInput(input);
 	}.bind(this);
@@ -236,7 +240,11 @@ FormQuestion.HaventPaid = function(botHandle, formHandle) {
 	this.onInput = function(input) {
 		botHandle.stopInput();
 		if (negativeInputs.indexOf(input.toLowerCase()) > -1) {
-			botHandle.say('I\'m so sorry, that must be really stressful. Give me a second to see how I can help.');
+			if(input === 'THAT\'S ABSURD') {
+				botHandle.say('I\'ll take that as a no. Give me a second to see how I can help.');
+			} else {
+				botHandle.say('I\'m so sorry, that must be really stressful. Give me a second to see how I can help.');
+			}
 			formHandle.pop();
 			formHandle.push(FormQuestion.RequestReceipt);
 		} else if (positiveInputs.indexOf(input.toLowerCase()) > -1) {
@@ -282,11 +290,36 @@ FormQuestion.RequestStatement = function(botHandle, formHandle) {
 FormQuestion.ScheduleTime = function(botHandle, formHandle) {
 	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
 	this.onTransition = function() {
-		botHandle.say('That\'s everything we need to respond to this eviction. You\'ll get a confirmation from the court soon. In case we need to schedule a court date, when will generally work for you?');
+		botHandle.say('That\'s everything we need to respond to this eviction. In case we need to schedule a video conference with someone from the court, when will generally work for you?');
 		botHandle.startInput();
 	}
 	this.onInput = function(input) {
-		
+		botHandle.stopInput();
+		formHandle.pop();
+		formHandle.push(FormQuestion.CheckForm);
+	}
+}
+
+FormQuestion.CheckForm = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
+	this.onTransition = function() {
+		formHandle.generateDocument();
+		botHandle.say('Okay, perfect! Here is the form we\'ve prepared for you. Does everything look correct?');
+		botHandle.startInput();
+	}
+	this.onInput = function(input) {
+		if (positiveInputs.indexOf(input.toLowerCase()) > -1) {
+			botHandle.say('Great! The court will contact you soon with anything else you need to know. I\'m rooting for you');
+			formHandle.pop();
+			formHandle.push(FormQuestion.Done);
+		}
+	}
+}
+
+FormQuestion.Done = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.done();
 	}
 }
 
