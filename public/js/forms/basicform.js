@@ -237,7 +237,7 @@ FormQuestion.RequestStatement = function(botHandle, formHandle) {
 		botHandle.stopInput();
 		botHandle.say("Thank you, I know this must be difficult.");
 		formHandle.pop();
-		formhandle.push(FormQuestion.ScheduleTime);
+		formHandle.push(FormQuestion.ScheduleTime);
 	}
 }
 
