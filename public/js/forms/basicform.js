@@ -48,7 +48,7 @@ var basicForm = function(botHandle) {
 		formHandle.handleInput(input);
 	}.bind(this);
 	
-	var responsesToRemember = ['case-number', 'statement', 'receipt', 'court-date'];
+	var responsesToRemember = ['case-number', 'statement', 'court-date'];
 }
 
 FormQuestion.Introduction = function(botHandle, formHandle) {
@@ -224,8 +224,31 @@ FormQuestion.RequestReceipt= function(botHandle, formHandle) {
 				formHandle.push(FormQuestion.NotImplemented);
 			});
 		}
-		
+	}
+}
 
+FormQuestion.RequestStatement = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.say("In 2-6 sentences, can you explain what happened? I'll be quoting you word for word, so just tell me the story (as you know it) from the beginning.");
+		botHandle.startInput();
+	}
+	this.onInput = function(input) {
+		botHandle.stopInput();
+		botHandle.say("Thank you, I know this must be difficult.");
+		formHandle.pop();
+		formhandle.push(FormQuestion.ScheduleTime);
+	}
+}
+
+FormQuestion.ScheduleTime = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'statement', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.say('That\'s everything we need to respond to this eviction. You\'ll get a confirmation from the court soon. In case we need to schedule a court date, when will generally work for you?');
+		botHandle.startInput();
+	}
+	this.onInput = function(input) {
+		
 	}
 }
 
