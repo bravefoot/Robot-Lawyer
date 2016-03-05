@@ -25,8 +25,7 @@ $(document).ready(function(){
 		url: '/user'
 	}).done(function(data) {
 		$("#username-field").html(data.profile.name ? data.profile.name : data.email + "&nbsp;<i class='caret'></i>");
-		$("#gravatar-field").attr("src", data.gravatarImage);
-		console.log(data);
+		$("#gravatar-field").attr("src", data.profilePicture);
 	});
 
 

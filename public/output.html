@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+        <script src="/js/lib/jquery-2.2.0.min.js"></script>
+        <script src="/js/lib/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div id='main_body'>
+            
+            <div class='top_part'>
+                
+                <div class='underline' id='name'>asdf</div>
+                <p>Name</p>
+                <div class='underline' id='address'>asdf</div>
+                <p>Address</p>
+                <div class='underline' id='location'>asdf</div>
+                <p>City, State, Zip</p>
+                <div class='underline' id='email'>asdf</div>
+                <p>Phone</p>
+                <div class='underline' id='email'>asdf</div>
+                <p>Email</p>
+                <br/>
+                <p> I am the [X] Plaintiff</p>
+                <p style='margin-left:50px;'>          [ &nbsp &nbsp] Attourney for the Defendant/Respondent and my Utah Bar number is ____________ </p>
+                <div style='border-bottom: 2px solid black; width:100%;'></div>
+            </div>
+            <h5 style='text-align:center;'>In the District Court of Utah </h5>
+            <h5 style='text-align:center;'>3rd Judicial District Salt Lake County  </h5>
+            <h4>Court Address 450 State Street, Salt Lake City, UT, 84111</h4>
+            <br/>
+            <div id='leftstuff'>
+                <div class='underline' id='petitioner'>asdf</div>
+                <p>Plaintiff/Petitioner</p>
+                <br/>
+                <p>v. </p>
+                <div class='underline' id='defendant'>asdf</div>
+                <p>Defendant</p>
+            </div>
+            <div id='rightstuff'>
+                <div class='underline' id='caseNumber'>VC983</div>
+                <p>Case Number</p>
+                <div class='underline' id='Judge'>Judy</div>
+                <p>Judge</p>
+                <div class='underline' id='commissioner'>Commisioner</div>
+                <p>Commissioner</p>
+            </div>
+            <br style='clear:both;'/>
+            <p>Instructions: &#61623; You must complete this form before you file it. Court staff cannot complete this form for you. Use the Checklist to help you understand and complete this form. &#61623; Keep a copy of all documents for your records. &#61623; Attend all court hearings. &#61623; Attach: o Additional pages as needed to complete paragraphs that don&rsquo;t have enough space. Write the paragraph number on the additional page. o Any documents referred to in this document. o Non-Public Information Form, more fully describing any non-public information referred to in this document.
+            </p>
+            <br/>
+            <p>
+            [ ] By and through my attorney, (Attorney, check here if you are appearing for your client.) I say as follows:</p>
+            <br/>
+            <br/>
+            <div id='optional_stuff'>
+                (1) I agree completely with everything stated in the following numbered paragraphs
+                of the complaint or petition:
+                [This paragraph is optional. Complete only if you have more to say.]
+                <br/>
+                <div class='widetext'></div><div class='widetext'></div><div class='widetext'></div><div class='widetext'></div>
+                (2) I disagree with all or part of the following numbered paragraphs of the complaint
+                or petition:
+                <br/>
+                [This paragraph is optional. Complete only if you have more to say.]
+                <br/>
+                <div class='widetext'></div><div class='widetext'></div><div class='widetext'></div><div class='widetext'></div>
+                (3) I neither agree nor disagree with the following numbered paragraphs of the
+                complaint or petition because I don’t have enough information:
+                <br/>
+                <div class='widetext'></div><div class='widetext'></div><div class='widetext'></div><div class='widetext'></div>
+                (4) Referring to paragraph number _______ of the complaint or petition, I state that:
+                <br/>
+                [This paragraph is optional. Complete only if you have more to say.]
+                <br/>
+                <div class='widetext'></div><div class='widetext'></div><div class='widetext'></div><div class='widetext'></div>
+                (5) Referring to paragraph number _______ of the complaint or petition, I state that:
+                <br/>
+                [This paragraph is optional. Complete only if you have more to say.]
+                <br/>
+                <div class='widetext'></div><div class='widetext'></div><div class='widetext'></div><div class='widetext'></div>
+                (6) Referring to paragraph number _______ of the complaint or petition, I state that:
+                <br/>
+                [This paragraph is optional. Complete only if you have more to say.]
+                <br/>
+                <div class='widetext'></div><div class='widetext'></div><div class='widetext'></div><div class='widetext'></div>
+                <h4 style='text-align:center;'>Affirmative Defences </h4>
+                <p>[Optional. Complete these paragraphs only if you know a reason why the plaintiff/petitioner should not win
+                the case, other than what you have already stated in your answers above.] </p>
+                <br/>
+                <br/>
+                <br/>
+                <div id='defense'></div>
+                <br/>
+                <br/>
+                <h4 style='text-align:center;'>Request  </h4>
+                <br/>
+                <p>
+                    [Explain what you want the court to do based on your defenses. Be specific. For example, "I ask the court
+                to dismiss the Complaint."] </p>
+                <br/>
+                <br/>
+                <div id='request'></div>
+                <br/>
+                <br/>
+                <p>(12) [ X ] I also ask for such other relief as the court finds equitable and just. </p>
+                <br/>
+                <div class='underline' id='date'>asdf</div>
+                <p>Date</p>
+                <div class='underline' id='signature'>asdf</div>
+                <p>Signature</p>
+                <div class='underline' id='fullname'>asdf</div>
+                <p>Full Name</p>
+            </div>
+        </div>
+        <!--- Scripts -->
+        <script type="text/javascript" src="/js/questions/questions.js"></script>
+        <script type="text/javascript" src="/js/forms/basicform.js"></script>
+        <script type="text/javascript" src="/js/chat2.js"></script>
+        <script type="text/javascript" src="/js/typed.js"></script>
+    </body>
+    <style>
+    #main_body {
+    margin:30px;
+    }
+    .underline {
+    width: 250px;
+    border-bottom: 1px solid black;
+    height:20px;
+    }
+    #name {
+    margin-top: 150px;
+    }
+    p {
+    margin-top:1px;
+    font-size: 14px;
+    }
+    #rightstuff {
+    margin-left:90px;
+    float:left;
+    display:inline-block;
+    }
+    #leftstuff {
+    float:left;
+    display:inline-block;
+    }
+    .widetext {
+    border-bottom: 2px solid black;
+    width:100%;
+    height:20px;
+    }
+    </style>
