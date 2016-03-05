@@ -3,6 +3,7 @@
         <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
         <script src="/js/lib/jquery-2.2.0.min.js"></script>
         <script src="/js/lib/bootstrap.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div id='main_body'>
@@ -29,7 +30,7 @@
             <h4>Court Address 450 State Street, Salt Lake City, UT, 84111</h4>
             <br/>
             <div id='leftstuff'>
-                <div class='underline' id='petitioner'></div>
+                <div class='underline' id='petitioner'>Mark Zuckerberg</div>
                 <p>Plaintiff/Petitioner</p>
                 <br/>
                 <p>v. </p>
@@ -86,13 +87,12 @@
                 <h4 style='text-align:center;'>Affirmative Defences </h4>
                 <p>[Optional. Complete these paragraphs only if you know a reason why the plaintiff/petitioner should not win
                 the case, other than what you have already stated in your answers above.] </p>
-                <br/>
-                <br/>
+
                 <br/>
                 <div id='defense'></div>
                 <br/>
                 <br/>
-                <h4 style='text-align:center;'>Request  </h4>
+              <!--  <h4 style='text-align:center;'>Request  </h4>
                 <br/>
                 <p>
                     [Explain what you want the court to do based on your defenses. Be specific. For example, "I ask the court
@@ -101,7 +101,7 @@
                 <br/>
                 <div id='request'></div>
                 <br/>
-                <br/>
+                <br/> -->
                 <p>(12) [ X ] I also ask for such other relief as the court finds equitable and just. </p>
                 <br/>
                 <div class='underline' id='date'></div>
@@ -113,10 +113,11 @@
             </div>
         </div>
         <!--- Scripts -->
-        <script type="text/javascript" src="/js/questions/questions.js"></script>
+         <!--<script type="text/javascript" src="/js/questions/questions.js"></script>
         <script type="text/javascript" src="/js/forms/basicform.js"></script>
-        <script type="text/javascript" src="/js/chat2.js"></script>
+       <script type="text/javascript" src="/js/chat2.js"></script>-->
         <script type="text/javascript" src="/js/typed.js"></script>
+        <script type='text/javascript' src="/js/output.js"></script>
     </body>
     <style>
     #main_body {
@@ -148,4 +149,15 @@
     width:100%;
     height:20px;
     }
+    #signature {
+        font-family: 'Herr Von Muellerhoff', cursive;
+        font-size:36px;
+        padding-bottom:14px;
+        padding-left: 15px;
+        
+    }
     </style>
+
+
+
+
