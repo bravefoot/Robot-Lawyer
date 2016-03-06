@@ -49,12 +49,12 @@ $(document).ready(function(){
 		},
 		requestFile: function(callback) {
             //this.say('Please upload your evidence <a href="../api/upload">here:</a>');
-            this.say('Please upload your picture here: ' 
+            this.say('Please upload your picture here: '
             + "<form role='form' enctype='multipart/form-data' method='POST' action='/uploads/'>"
                 + "<div class='form-group'>"
-                    + "<input type='file' id='file-name' name='myfile'></input>" 
-                    + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>" 
-                + "</div>" 
+                    + "<input type='file' id='file-name' name='myfile'></input>"
+                    + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>"
+                + "</div>"
             + "</form>");
             var outputVal = this.say;
             setTimeout(function() {
@@ -71,7 +71,7 @@ $(document).ready(function(){
 			window.scrollTo(0,document.body.scrollHeight);
 		},
 		done: function() {
-
+			document.location = "../images/social.png";
 		}
 	}
 	var form = new basicForm(botHandle);
