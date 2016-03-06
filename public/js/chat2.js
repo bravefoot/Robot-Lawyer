@@ -51,8 +51,9 @@ $(document).ready(function(){
             //this.say('Please upload your evidence <a href="../api/upload">here:</a>');
             this.say('Please upload your picture here: ' 
             + "<form role='form' enctype='multipart/form-data' method='POST' action='/uploads/'>"
-                + "<div class='form-group'>"
-                    + "<input type='file' id='file-name' name='myfile'></input>" 
+                + "<div  style='margin-bottom: -30px' class='form-group'>"
+                    + "<input style='margin-top:10px;' type='file' id='file-name' name='myfile'></input>" 
+					+ "<div style='height: 16px; width 50%'></div>"
                     + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>" 
                 + "</div>" 
             + "</form>");
@@ -60,11 +61,11 @@ $(document).ready(function(){
             setTimeout(function() {
             	$('#fileSubmit').click(function(e){
             		e.preventDefault();
-                    var fnInput = document.getElementById('file-name');
-                    var fileName = fnInput.value.replace(/^.*[\\\/]/, '/uploads/');
-                    upload(fnInput.value,fileName);
-                    console.log(fileName);
-                    outputVal("<img src=" + fileName + "><\img>");
+                    //var fnInput = document.getElementById('file-name');
+                    //var fileName = fnInput.value.replace(/^.*[\\\/]/, '/uploads/');
+                    //upload(fnInput.value,fileName);
+                    //console.log(fileName);
+                    //outputVal("<img src=" + fileName + "><\img>");
             		callback();
             	});
             }, 900);
