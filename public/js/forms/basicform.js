@@ -1,5 +1,5 @@
-var positiveInputs = ["yes","yep", "of course",'yeah'];
-var negativeInputs = ['no','nope', 'that\'s absurd','nah'];
+var positiveInputs = ["yes","yep", "of course",'yeah', "yes, that\'s my address", "yeah, give me a second", "yeah, that looks right", "yeah, give second.", "yeah, that looks right.","yeah, give me a second.", "Yeah, give me a sec", "yeah, give me a sec.", "Yeah, just a sec", "Yeah, just a sec.", "Sure", "Okay", "Yes, that's my address", "yes!"];
+var negativeInputs = ['no','nope', 'that\'s absurd','nah', 'thats absurd', 'never', 'that\'s absurd!'];
 var FormQuestion = {};
 
 

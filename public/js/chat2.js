@@ -36,7 +36,7 @@ $(document).ready(function(){
 		say: function(text) {
 			//$('#chatarea').append('<div class="row"><div id="typed-strings" class="well chatbox robot-chat col-sm-5 col-lg-5"><p>Robot: '+ text +'</p></div></div>');
 			setTimeout(function(){
-				$('<div class="row"><div class="well chatbox robot-chat col-sm-5 col-lg-6">'+ text +'<br><span class="author-text">Robot</span></div></div>').hide().appendTo("#chatarea").fadeIn(2000);
+				$('<div class="row"><div class="well chatbox robot-chat col-sm-5 col-lg-6">'+ text +'<br><span class="author-text">Saul</span></div></div>').hide().appendTo("#chatarea").fadeIn(2000);
 				window.scrollTo(0,document.body.scrollHeight);
 			 }, 750);
 		},
@@ -51,20 +51,21 @@ $(document).ready(function(){
             //this.say('Please upload your evidence <a href="../api/upload">here:</a>');
             this.say('Please upload your picture here: '
             + "<form role='form' enctype='multipart/form-data' method='POST' action='/uploads/'>"
-                + "<div class='form-group'>"
-                    + "<input type='file' id='file-name' name='myfile'></input>"
+                + "<div  style='margin-bottom: -30px' class='form-group'>"
+                    + "<input style='margin-top:10px;' type='file' id='file-name' name='myfile'></input>"
+					+ "<div style='height: 16px; width 50%'></div>"
                     + "<button id='fileSubmit' class='btn btn-primary'>Submit</button>"
-                + "</div>"
+                + "</div>" 
             + "</form>");
             var outputVal = this.say;
             setTimeout(function() {
             	$('#fileSubmit').click(function(e){
             		e.preventDefault();
-                    var fnInput = document.getElementById('file-name');
-                    var fileName = fnInput.value.replace(/^.*[\\\/]/, '/uploads/');
-                    upload(fnInput.value,fileName);
-                    console.log(fileName);
-                    outputVal("<img src=" + fileName + "><\img>");
+                    //var fnInput = document.getElementById('file-name');
+                    //var fileName = fnInput.value.replace(/^.*[\\\/]/, '/uploads/');
+                    //upload(fnInput.value,fileName);
+                    //console.log(fileName);
+                    //outputVal("<img src=" + fileName + "><\img>");
             		callback();
             	});
             }, 900);
