@@ -1,0 +1,65 @@
+var positiveInputs = ["yes","yep", "of course",'yeah', "yes, that\'s my address", "yeah, give me a second", "yeah, that looks right", "yeah, give second.", "yeah, that looks right.","yeah, give me a second.", "Yeah, give me a sec", "yeah, give me a sec.", "Yeah, just a sec", "Yeah, just a sec.", "Sure", "Okay", "Yes, that's my address", "yes!"];
+var negativeInputs = ['no','nope', 'that\'s absurd','nah', 'thats absurd', 'never', 'that\'s absurd!'];
+var FormQuestion = {};
+
+var basicForm = function(botHandle) {
+	$.ajax('/js/forms/basicform.json').then(function(data){
+		var questions = data.questions
+		var firstQuestion = questions.one
+		this.currentQuestion = 
+	})
+}
+
+function handleQuestion(botHandle, question, questions) {
+	botHandle.say(question.questionText);
+	switch(question.type) {
+		case 'binary':
+			handleBinaryQuestion(botHandle, question, questions);
+			break;
+		case 'numeric':
+			handleNumericQuestion(botHandle, question, questions);
+			break;
+		case 'upload':
+			handleUploadQuestion(botHandle, question, questions);
+			break;
+		case 'statement':
+			handleStatementQuestion(botHandle, question, questions);
+			break;
+	}
+}
+
+function handleBinaryQuestion(botHandle, question, questions) {
+	
+}
+
+
+FormQuestion.NotImplemented = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'not-implemented', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.say("We haven't gotten to this flow yet. Would you like to go back to the last question?")
+		botHandle.startInput();
+	}
+	this.onInput = function(input) {
+		if(positiveInputs.indexOf(input.toLowerCase()) > -1) {
+			formHandle.pop();
+		} else {
+			formHandle.pop();
+			formHandle.push(FormQuestion.NotImplemented);
+		}
+	}
+}
+
+FormQuestion.Confused = function(botHandle, formHandle) {
+	questions.BaseQuestion.call(this, 'confused', botHandle, formHandle);
+	this.onTransition = function() {
+		botHandle.say("I don't quite understand your response")
+		botHandle.startInput();
+	}
+	this.onInput = function(input) {
+		formHandle.popAndForwardInput(input);
+	}
+}
+
+FormQuestion.HandleQuestion = function(botHandle, formHandle, key, questions) {
+	
+}

@@ -21,12 +21,12 @@ function upload(file,newURL) {
 
 $(document).ready(function(){
 	// Populate user name and gravatar
-	$.ajax({
+	/*$.ajax({
 		url: '/user'
 	}).done(function(data) {
 		$("#username-field").html(data.profile.name ? data.profile.name : data.email + "&nbsp;<i class='caret'></i>");
 		$("#gravatar-field").attr("src", data.profilePicture);
-	});
+	});*/
 
 
 	$('#user-input').focus();

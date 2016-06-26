@@ -1,0 +1,56 @@
+{"form": {
+	"verifyInfo": true,
+	"questions": {
+		"one": {
+			"questionText": "Okay, now I just need the case number you should have received in your eviction notice.",
+			"hints": [
+				{"hintText": "It should look like this: <img height=\"200px\" src=\"/images/Plaintiff.PNG\"></img>"}
+			],
+			"type": "numeric",
+			"responses": {
+				"valid": {
+					"response": "Alright, we're pulling up your case information now.",
+					"next": "two"
+				},
+				"invalid": {
+					"response": "That doesn't quite look like a case number"
+				}
+			}
+		},
+		"two": {
+			"questionText": "It looks like your landlord is claiming you haven't paid your rent in 3 months. Is that true?",
+			"type": "binary",
+			"responses": {
+				"no": {
+					"response": "Give me a second to see how I can help.",
+					"next": "three"
+				},
+				"yes": {
+					"response": "That might make things a bit trickier. I'll need some more time to think about it.",
+					"next": "unimplemented"
+				}
+			}
+		},
+		"three": {
+			"questionText": "Do you have any evidence of payment? Maybe a picture/pdf of a bank statement?",
+			"type": "upload",
+			"responses": {
+				"upload": {
+					"response": "Thank you.",
+					"next": "four"
+				}
+			}
+		},
+		"four": {
+			"questionText": "We are putting together a case for you, but a statement of some sort would go a long way. In 2-6 sentences, can you explain what happened? I'll be quoting you word for word, so just tell me the story (as you know it) from the beginning.",
+			"type": "statement",
+			"responses": {
+				"complete": {
+					"response": "Thank you, I know this must be difficult.",
+					"next": ""
+				}
+			}
+		}
+	}
+}
+}
